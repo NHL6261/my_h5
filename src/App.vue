@@ -1,22 +1,22 @@
 <template>
   <div id="app">
     <!-- main 内容 -->
-    <transition :name="mainName">
+    <!-- <transition :name="mainName"> -->
       <keep-alive v-if="$route.meta.keepAlive">
         <!-- 这里是会被缓存的视图组件 -->
         <router-view id="view" v-if="$route.meta.keepAlive" />
       </keep-alive>
       <!-- 这里是不被缓存的视图组件 -->
       <router-view v-if="!$route.meta.keepAlive && isRouterAlive" id="view" />
-    </transition>
+    <!-- </transition> -->
 
     <!-- 底部导航 -->
-    <transition :name="navName">
+    <!-- <transition :name="navName"> -->
       <footer-nav
         v-if="isShowNav"
         :activeNavIndex="activeNavIndex"
       ></footer-nav>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -91,9 +91,7 @@ export default {
         this.navName = "nav-slide";
         navTabs.includes(toName) && (this.isShowNav = true);
       }
-
       document.title = to.meta.title;
-
       this.$router.options.routes.forEach((item) => {
         if (item.path == to.path) {
           if (item.hidden == true) {
@@ -110,6 +108,11 @@ export default {
 </script>
 
 <style scoped>
+#app{
+  width: 100%;
+  height: 100vh;
+  background: #F7F7F7;
+}
 .nav-slide-enter,
 .nav-slide-leave-to {
   transform: translate3d(-100%, 0, 0);

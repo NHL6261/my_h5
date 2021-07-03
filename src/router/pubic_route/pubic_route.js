@@ -12,6 +12,7 @@ export default [
     {
         path: "/login",
         name: "About",
+        hidden: true,
         meta: {
             tabbar: false,
         },
@@ -27,13 +28,13 @@ export default [
         component: () =>
             import ("@/components/agreement"),
     },
-    {
-        path: "/home",
-        name: "Home",
-        meta: {
-            tabbar: false,
-        },
-        component: () =>
-            import ("@/views/System/home"),
-    },
+    // {
+    //     path: "/home",
+    //     name: "Home",
+    //     meta: {
+    //         tabbar: false,
+    //     },
+    //     component: () =>
+    //         import ("@/views/System/home"),
+    // },
 ];

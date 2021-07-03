@@ -1,46 +1,52 @@
 export default [
 
     {
-        path: '/app/tab_bar1',
-        name: 'tab_bar1',
+        path: "/app/home",
+        name: "home",
         meta: {
-            title: '菜单一', //title或者菜单名
+            title: "首页", //title或者菜单名
             tab_bar: true, //是否创建tab_bar
-            menu_img: ["btn-bottom1_1.png", "btn-bottom1_0.png"] //底部菜单图片，默认为第一个为选中状态
+            menu_img: ["btn-bottom1_1.png", "btn-bottom1_0.png"], //底部菜单图片，默认为第一个为选中状态
+            icon: "home-o",
         },
         component: () =>
-            import ('@/views/System/home')
-    }, {
-        path: '/app/tab_bar2',
-        name: 'tab_bar2',
+            import ("@/views/System/home"),
+    },
+    {
+        path: "/app/classification",
+        name: "classification",
         meta: {
-            title: '菜单二',
+            title: "分类",
             tab_bar: true,
-            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"]
+            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"],
+            icon: "apps-o"
         },
         component: () =>
-            import ('@/views/System/home')
-    }, {
-        path: '/app/tab_bar3',
-        name: 'tab_bar3',
+            import ("@/views/System/classification"),
+    },
+    {
+        path: "/app/shoppingcart",
+        name: "shoppingcart",
         meta: {
-            title: '菜单三',
+            title: "购物车",
             tab_bar: true,
-            menu_img: ["btn-bottom3_0.png", "btn-bottom3_1.png"]
+            menu_img: ["btn-bottom3_0.png", "btn-bottom3_1.png"],
+            icon: "shopping-cart-o"
         },
         component: () =>
-            import ('@/views/System/home')
+            import ("@/views/System/shoppingcart"),
     },
 
     {
-        path: '/app/tab_bar4',
-        name: 'tab_bar4',
+        path: "/app/my",
+        name: "my",
         meta: {
-            title: '菜单四',
+            title: "我的",
             tab_bar: true,
-            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"]
+            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"],
+            icon: "friends-o"
         },
         component: () =>
-            import ('@/views/System/home')
-    }
-]
+            import ("@/views/System/my"),
+    },
+];

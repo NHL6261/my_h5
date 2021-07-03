@@ -109,7 +109,7 @@ export default {
                   position: "top",
                 });
                 this.$store.commit("SAVA_TOKEN", token);
-                this.$router.push({ name: 'Home' })
+                this.$router.push({ name: 'home' })
               }
             });
         })
