@@ -49,7 +49,7 @@
 <script>
 import loginBg from "@/components/loginBg";
 import sliDer from "@/components/slider";
-import { rq_fun } from '@/api/login'
+import { rq_fun } from "@/api/login";
 export default {
   components: {
     loginBg,
@@ -61,7 +61,7 @@ export default {
       password: "",
       valiterSliser: null,
       valiterTitle: "",
-      checked: true,
+      checked: false,
     };
   },
   methods: {
@@ -77,16 +77,41 @@ export default {
       this.$router.push({ path: "/agreement" });
     },
     loginHandle() {
+      if(this.username == ""){
+        this.$toast("请输入用户名");
+        return
+      }
+      if(this.password == ""){
+        this.$toast("请输入密码");
+        return
+      }
+      if (!this.valiterSliser) {
+        this.$toast("请拖动滑块验证");
+        return;
+      }
+      if (!this.checked) {
+        this.$toast("请阅读后勾选此协议");
+        return;
+      }
       this.$refs.loginForm
         .validate()
         .then(() => {
-          rq_fun.loginAction({
-            user: this.username,
-            password: this.password
-          }).then(res => {
-            console.log(res)
-          })
-          // this.$toast.success("提交成功");
+          rq_fun
+            .loginAction({
+              user: this.username,
+              password: this.password,
+            })
+            .then((res) => {
+              let { code, msg, token } = res;
+              if (code == 200) {
+                this.$toast({
+                  message: `${msg}`,
+                  position: "top",
+                });
+                this.$store.commit("SAVA_TOKEN", token);
+                this.$router.push({ name: 'Home' })
+              }
+            });
         })
         .catch(() => {
           this.$toast.fail("提交失败");
