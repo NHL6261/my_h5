@@ -6,7 +6,6 @@ export default [
         meta: {
             title: "首页", //title或者菜单名
             tab_bar: true, //是否创建tab_bar
-            menu_img: ["btn-bottom1_1.png", "btn-bottom1_0.png"], //底部菜单图片，默认为第一个为选中状态
             icon: "home-o",
         },
         component: () =>
@@ -18,8 +17,7 @@ export default [
         meta: {
             title: "分类",
             tab_bar: true,
-            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"],
-            icon: "apps-o"
+            icon: "apps-o",
         },
         component: () =>
             import ("@/views/System/classification"),
@@ -30,8 +28,7 @@ export default [
         meta: {
             title: "购物车",
             tab_bar: true,
-            menu_img: ["btn-bottom3_0.png", "btn-bottom3_1.png"],
-            icon: "shopping-cart-o"
+            icon: "shopping-cart-o",
         },
         component: () =>
             import ("@/views/System/shoppingcart"),
@@ -43,10 +40,24 @@ export default [
         meta: {
             title: "我的",
             tab_bar: true,
-            menu_img: ["btn-bottom2_0.png", "btn-bottom2_1.png"],
-            icon: "friends-o"
+            icon: "friends-o",
+            iconShow: false
         },
         component: () =>
             import ("@/views/System/my"),
+    },
+
+    // 跳转到详情页面
+    {
+        path: "/app/order",
+        name: "MyOrder",
+        hidden: true,
+        meta: {
+            title: "我的订单",
+            icon: "friends-o",
+            iconShow: true
+        },
+        component: () =>
+            import ("@/components/orderDetails"),
     },
 ];

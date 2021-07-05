@@ -29,8 +29,24 @@
               <p>{{ "我的订单" }}</p>
             </div>
             <div class="ls_order">
-              <p>{{ "查看全部订单" }}</p>
+              <!-- <router-link to="/app/order">{{ "查看全部订单" }}</router-link> -->
+              <p @click.stop="viewAllOrder(5)">{{ "查看全部订单" }}</p>
               <van-icon name="arrow" />
+            </div>
+          </div>
+        </van-col>
+        <van-col span="24" class="all_order">
+          <!-- 全部订单 -->
+          <div class="call" v-for="(item, id) in allOrderData" :key="id">
+            <van-badge :content="5" v-if="item.id <= 1">
+              <div class="child" />
+            </van-badge>
+            <div
+              class="all_item"
+              @click.stop="viewAllOrder(item.id, item.orderName)"
+            >
+              <van-icon :name="item.iconName" class="icon" />
+              <p>{{ item.orderName }}</p>
             </div>
           </div>
         </van-col>
@@ -46,7 +62,47 @@ export default {
     headerinfo,
   },
   data() {
-    return {};
+    return {
+      allOrderData: [
+        {
+          id: 1,
+          iconName: "credit-pay",
+          orderName: "待付款",
+        },
+        {
+          id: 2,
+          iconName: "peer-pay",
+          orderName: "待发货",
+        },
+        {
+          id: 3,
+          iconName: "logistics",
+          orderName: "待收货",
+        },
+        {
+          id: 4,
+          iconName: "after-sale",
+          orderName: "售后/列表",
+        },
+        {
+          id: 5,
+          iconName: "orders-o",
+          orderName: "全部订单",
+        },
+      ],
+    };
+  },
+  methods: {
+    viewAllOrder(tabrId, itemName) {
+      sessionStorage.setItem(
+        "allOrderId",
+        JSON.stringify({ tabrId, itemName, allOrderData: this.allOrderData })
+      );
+      this.$router.push({
+        name: "MyOrder",
+        params: { id: tabrId, name: itemName },
+      });
+    },
   },
 };
 </script>
@@ -92,7 +148,7 @@ export default {
   font-size: 16px;
 }
 .order {
-  padding: 8px 15px 18px;
+  padding: 8px 25px 18px;
   box-sizing: border-box;
   border-bottom: 1px solid #f5f5f5;
   border-top-left-radius: 5px;
@@ -114,6 +170,31 @@ export default {
     .order_text {
       font-size: 0.8rem;
       color: #434343;
+    }
+  }
+}
+.all_order {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 25px;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  .call {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    .all_item {
+      text-align: center;
+      > .icon {
+        font-size: 26px;
+        color: #c80000;
+      }
+      > p {
+        font-size: 12px;
+      }
     }
   }
 }

@@ -45,8 +45,6 @@ export default {
         let menu = {
           name: item.name,
           title: item.meta.title,
-          //  normal: require(`@/assets/${item.meta.menu_img[0]}`),
-          //  active: require(`@/assets/${item.meta.menu_img[1]}`),
           icon: item.meta.icon,
           path: item.path,
         };

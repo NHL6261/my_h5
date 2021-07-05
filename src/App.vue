@@ -95,7 +95,6 @@ export default {
       this.$router.options.routes.forEach((item) => {
         if (item.path == to.path) {
           if (item.hidden == true) {
-            console.log(item);
             this.isShowNav = false;
           } else {
             this.isShowNav = true;

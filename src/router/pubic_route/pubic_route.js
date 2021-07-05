@@ -15,6 +15,7 @@ export default [
         hidden: true,
         meta: {
             tabbar: false,
+            title: "登录",
         },
         component: () =>
             import ("@/views/authorization"),
@@ -22,19 +23,12 @@ export default [
     {
         path: "/agreement",
         name: "Agreement",
+        hidden: true,
         meta: {
             tabbar: false,
+            title: "协议",
         },
         component: () =>
             import ("@/components/agreement"),
     },
-    // {
-    //     path: "/home",
-    //     name: "Home",
-    //     meta: {
-    //         tabbar: false,
-    //     },
-    //     component: () =>
-    //         import ("@/views/System/home"),
-    // },
 ];
