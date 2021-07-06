@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Headerinfo />
-    <van-tabs v-model="targeId">
+    <HeaderCom />
+    <van-tabs v-model="targeId" class="big_order" swipeable>
       <van-tab
-        badge="5"
         :title="
           ActiveName[0].orderName == '' ? '待付款' : ActiveName[0].orderName
         "
@@ -41,7 +40,6 @@
 
 <script>
 import Send from "@/components/modules/order/send";
-import Headerinfo from "@/components/modules/headerinfo/headerinfo.vue";
 import Payment from "@/components/modules/order/payment";
 import After from "@/components/modules/order/after";
 import Allorder from "@/components/modules/order/allorder";
@@ -69,7 +67,6 @@ export default {
   },
   components: {
     After,
-    Headerinfo,
     Delivery,
     Payment,
     Send,
@@ -79,9 +76,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.big_order{
+  border-top: 1px solid #F2F2F2;
+}
 .payment {
   width: 100%;
-  height: calc(100vh - 84px);
   padding: 0 10px;
   box-sizing: border-box;
 }

@@ -1,13 +1,19 @@
 <template>
   <div>
-      <h1>待发货</h1>
+    <NoData v-if="sendData.length < 1" />
   </div>
 </template>
 
 <script>
+import NoData from "@/components/promot/nodata";
 export default {
   data() {
-    return {};
+    return {
+      sendData: [],
+    };
+  },
+  components: {
+    NoData,
   },
 };
 </script>

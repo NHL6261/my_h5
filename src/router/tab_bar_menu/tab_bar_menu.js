@@ -1,6 +1,4 @@
-export default [
-
-    {
+export default [{
         path: "/app/home",
         name: "home",
         meta: {
@@ -38,15 +36,40 @@ export default [
         path: "/app/my",
         name: "my",
         meta: {
-            title: "我的",
+            title: "我的商城",
             tab_bar: true,
             icon: "friends-o",
-            iconShow: false
+            iconShow: false,
         },
         component: () =>
             import ("@/views/System/my"),
     },
 
+    // 我的设置
+    {
+        path: "/my/setting",
+        name: "MySetting",
+        hidden: true,
+        meta: {
+            title: "账户设置",
+            iconShow: true,
+        },
+        component: () =>
+            import ("@/views/System/my/setting"),
+    },
+
+    // 我的资产
+    {
+        path: "/my/assets",
+        name: "MyAssets",
+        hidden: true,
+        meta: {
+            title: "我的资产",
+            iconShow: true,
+        },
+        component: () =>
+            import ("@/components/modules/myassets"),
+    },
     // 跳转到详情页面
     {
         path: "/app/order",
@@ -55,7 +78,7 @@ export default [
         meta: {
             title: "我的订单",
             icon: "friends-o",
-            iconShow: true
+            iconShow: true,
         },
         component: () =>
             import ("@/components/orderDetails"),
