@@ -69,11 +69,21 @@
                 </p>
               </div>
               <div class="assets_item">
-                <van-icon name="pending-payment" class="icon" v-if="item.assets_icon"/>
+                <van-icon
+                  name="pending-payment"
+                  class="icon"
+                  v-if="item.assets_icon"
+                />
                 <p>{{ item.assets_item }}</p>
               </div>
             </div>
           </div>
+        </van-col>
+      </van-row>
+      <!-- 工具与服务 -->
+      <van-row>
+        <van-col span="24" class="tool">
+          <p>工具与服务</p>
         </van-col>
       </van-row>
     </div>
@@ -162,12 +172,12 @@ export default {
         params: { id: tabrId, name: itemName },
       });
     },
-    goAssetsId(id){
-      id == 5 && this.goPath()
+    goAssetsId(id) {
+      id == 5 && this.goPath();
     },
-    goPath(){
-      this.$router.push({ path: '/my/assets' })
-    }
+    goPath() {
+      this.$router.push({ path: "/my/assets" });
+    },
   },
 };
 </script>
@@ -179,7 +189,8 @@ export default {
 }
 .whole,
 .order,
-.assets {
+.assets,
+.tool {
   width: 100%;
   //   border-radius: 5px;
   background: #fff;
@@ -309,11 +320,21 @@ export default {
     }
   }
 }
-.assets_item{
+.assets_item {
   text-align: center;
-  >.icon{
+  > .icon {
     color: #c80000;
     font-size: 20px;
+  }
+}
+.tool {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 15px;
+  > p {
+    color: #2e2d2d;
+    font-size: 14px;
+    font-weight: 700;
   }
 }
 </style>
